@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="La Ciccia Pizzaria - Pizzas artesanais italianas, combos e promoções.">
+    <title>La Ciccia Pizzaria</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(to bottom, #009246, #f0f0f0); /* Gradiente italiano */
+            font-family: 'Arial', sans-serif;
+        }
+        .navbar {
+            background-color: #ce2b37 !important; /* Vermelho italiano */
+        }
+        .navbar-brand {
+            font-weight: bold;
+            color: white !important;
+        }
+        .tab-content {
+            animation: fadeIn 0.5s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .card {
+            border: none;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .carousel-item img {
+            height: 400px;
+            object-fit: cover;
+        }
+        footer {
+            background-color: #009246;
+            color: white;
+            padding: 20px 0;
+        }
+        .rating {
+            color: #ffd700; /* Estrelas douradas */
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">La Ciccia Pizzaria</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><button class="nav-link btn" onclick="showTab('home')">Home</button></li>
+                    <li class="nav-item"><button class="nav-link btn" onclick="showTab('pizzas')">Pizzas</button></li>
+                    <li class="nav-item"><button class="nav-link btn" onclick="showTab('combos')">Combos</button></li>
+                    <li class="nav-item"><button class="nav-link btn" onclick="showTab('promocoes')">Promoções</button></li>
+                    <li class="nav-item"><button class="nav-link btn" onclick="showTab('bebidas')">Bebidas</button></li>
+                    <li class="nav-item"><button class="nav-link btn" onclick="showTab('carrinho')">Carrinho</button></li>
+                    <li class="nav-item"><button class="nav-link btn" onclick="showTab('contato')">Contato</button></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo das Abas -->
+    <div class="container mt-4">
+        <div id="home" class="tab-content active">
+            <h2 class="text-center text-white mb-4">Bem-vindo à La Ciccia!</h2>
+            <div id="carouselHome" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=800" class="d-block w-100" alt="Pizza Italiana">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Pizzas Artesanais</h5>
+                            <p>Sabores autênticos da Itália.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=800" class="d-block w-100" alt="Pizza Pepperoni">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Combos Irresistíveis</h5>
+                            <p>Para toda a família.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="https://images.unsplash.com/photo-1554866585-cd94860890b7?w=800" class="d-block w-100" alt="Refrigerantes">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Bebidas Refrescantes</h5>
+                            <p>Perfeitas para acompanhar.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselHome" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselHome" data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+
+        <div id="pizzas" class="tab-content">
+            <h2 class="text-center mb-4">Nossas Pizzas</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="pizza de margarita.jpeg" class="card-img-top" alt="Pizza Margherita">
+                        <div class="card-body">
+                            <h5 class="card-title">Pizza Margherita</h5>
+                            <p class="card-text">Molho de tomate, mozzarella fresca e manjericão. <span class="rating">★★★★★</span></p>
+                            <p class="fw-bold">R$ 35,00</p>
+                            <button class="btn btn-success" onclick="addToCart('Pizza Margherita', 35)">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="pizza de peperoni.jpeg" class="card-img-top" alt="Pizza Pepperoni">
+                        <div class="card-body">
+                            <h5 class="card-title">Pizza Pepperoni</h5>
+                            <p class="card-text">Molho de tomate, mozzarella e pepperoni picante. <span class="rating">★★★★☆</span></p>
+                            <p class="fw-bold">R$ 40,00</p>
+                            <button class="btn btn-success" onclick="addToCart('Pizza Pepperoni', 40)">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=300" class="card-img-top" alt="Pizza Quatro Queijos">
+                        <div class="card-body">
+                            <h5 class="card-title">Pizza Quatro Queijos</h5>
+                            <p class="card-text">Mozzarella, gorgonzola, parmesão e provolone. <span class="rating">★★★★★</span></p>
+                            <p class="fw-bold">R$ 45,00</p>
+                            <button class="btn btn-success" onclick="addToCart('Pizza Quatro Queijos', 45)">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="combos" class="tab-content">
+            <h2 class="text-center mb-4">Combos Especiais</h2>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=300" class="card-img-top" alt="Combo Família">
+                        <div class="card-body">
+                            <h5 class="card-title">Combo Família</h5>
+                            <p class="card-text">2 Pizzas grandes + 1 refrigerante 2L. <span class="rating">★★★★★</span></p>
+                            <p class="fw-bold">R$ 80,00</p>
+                            <button class="btn btn-success" onclick="addToCart('Combo Família', 80)">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <img src="combo.jpeg" class="card-img-top" alt="Combo Individual">
+                        <div class="card-body">
+                            <h5 class="card-title">Combo Medio</h5>
+                            <p class="card-text">1 Pizza média + 1 refrigerante 600ml. <span class="rating">★★★★☆</span></p>
+                            <p class="fw-bold">R$ 50,00</p>
+                            <button class="btn btn-success" onclick="addToCart('Combo Individual', 50)">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="promocoes" class="tab-content">
+            <h2 class="text-center mb-4">Promoções</h2>
+            <div class="alert alert-warning">Descontos especiais toda semana!</div>
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?w=300" class="card-img-top" alt="Promo Pizza">
+                        <div class="card-body">
+                            <h5 class="card-title">Pizza do Dia</h5>
+                            <p class="card-text">Qualquer pizza com 20% de desconto às terças. <span class="rating">★★★★★</span></p>
+                            <p class="fw-bold text-danger">R$ 28,00 (original R$ 35,00)</p>
+                            <button class="btn btn-success" onclick="addToCart('Pizza do Dia', 28)">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="bebidas" class="tab-content">
+            <h2 class="text-center mb-4">Bebidas e Refrigerantes</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1554866585-cd94860890b7?w=300" class="card-img-top" alt="Coca-Cola">
+                        <div class="card-body">
+                            <h5 class="card-title">Coca-Cola 600ml</h5>
+                            <p class="card-text">Refrigerante gelado. <span class="rating">★★★★☆</span></p>
+                            <p class="fw-bold">R$ 5,00</p>
+                            <button class="btn btn-success" onclick="addToCart('Coca-Cola 600ml', 5)">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1581006852262-e4307cf6283a?w=300" class="card-img-top" alt="Fanta Laranja">
+                        <div class="card-body">
+                            <h5 class="card-title">Fanta Laranja 600ml</h5>
+                            <p class="card-text">Refrigerante refrescante. <span class="rating">★★★★★</span></p>
+                            <p class="fw-bold">R$ 5,00</p>
+                            <button class="btn btn-success" onclick="addToCart('Fanta Laranja 600ml', 5)">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="https://images.unsplash.com/photo-1554866585-cd94860890b7?w=300" class="card-img-top" alt="Refrigerante 2L">
+                        <div class="card-body">
+                            <h5 class="card-title">Coca-Cola 2L</h5>
+                            <p class="card-text">Para compartilhar. <span class="rating">★★★★☆</span></p>
+                            <p class="fw-bold">R$ 10,00</p>
+                            <button class="btn btn-success" onclick="addToCart('Coca-Cola 2L', 10)">Adicionar ao Carrinho</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="carrinho" class="tab-content">
+            <h2 class="text-center mb-4">Seu Carrinho</h2>
+            <ul id="cart-list" class="list-group mb-3"></ul>
+            <p id="cart-total" class="fw-bold">Total: R$ 0,00</p>
+            <button class="btn btn-danger me-2" onclick="clearCart()">Limpar Carrinho</button>
+            <button class="btn btn-primary">Finalizar Pedido</button>
+        </div>
+
+        <div id="contato" class="tab-content">
+            <h2 class="text-center mb-4">Contato</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Informações</h5>
+                    <p>Endereço: Rua Itália, 123 - São Paulo, SP</p>
+                    <p>Telefone: (11) 99999-9999</p>
+                    <p>Email: contato@lacicciapizzaria.com</p>
+                </div>
+                <div class="col-md-6">
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="message" class="form-label">Mensagem</label>
+                            <textarea class="form-control" id="message" rows="3" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="container">
+            <p>&copy; 2023 La Ciccia Pizzaria. Todos os direitos reservados.</p>
+            <p>Siga-nos: <a href="#" class="text-white">Facebook</a> | <a href="#" class="text-white">Instagram</a></p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function showTab(tabId){
+            
+        }
